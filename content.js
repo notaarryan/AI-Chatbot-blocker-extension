@@ -1,4 +1,29 @@
-const blockedSites = ["chatgpt.com", "gemini.google.com", "claude.ai"];
+const blockedSites = [
+  "chatgpt.com",
+  "gemini.google.com",
+  "claude.ai",
+  "chat.deepseek.com",
+  "perplexity.ai",
+  "copilot.microsoft.com",
+  "you.com",
+  "grok.com",
+];
+
+navigation.addEventListener("navigate", (e) => {
+  chrome.storage.local.get({ runBackground: false }, (data) => {
+    if (data.runBackground) {
+      blockSite();
+    }
+  });
+});
+
+document.addEventListener("keydown", (e) => {
+  chrome.storage.local.get({ runBackground: false }, (data) => {
+    if (data.runBackground) {
+      blockSite();
+    }
+  });
+});
 
 function blockSite() {
   const currentHostname = window.location.hostname;
@@ -12,6 +37,7 @@ function blockSite() {
     document.documentElement.style.background = "black";
 
     const overlay = document.createElement("div");
+    overlay.style.fontFamily = "sans-serif";
     overlay.style.position = "fixed";
     overlay.style.top = "0";
     overlay.style.left = "0";
