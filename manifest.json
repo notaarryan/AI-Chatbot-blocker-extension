@@ -3,7 +3,7 @@
   "name": "AI Chatbot blocker",
   "version": "1.0",
   "description": "Extension to block AI Chat bots",
-  "permissions": ["storage", "tabs", "notifications"],
+  "permissions": ["storage", "tabs"],
   "action": {
     "default_popup": "index.html",
     "default_icon": "icon.png"

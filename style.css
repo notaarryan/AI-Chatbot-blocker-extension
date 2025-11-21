@@ -1,0 +1,53 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+}
+
+body {
+    background-color: #000;
+    color: #00ff41;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+div.cover {
+    border: 2px solid #00ff41;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #00ff41;
+    background: rgba(0, 0, 0, 0);
+}
+
+#title {
+    font-size: 2rem;
+    text-align: center;
+    text-shadow: 0 0 10px #00ff41;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: inherit;
+    border: 2px solid #00ff41;
+    color: #00ff41;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    display: block;
+    margin: auto;
+}
+
+button:hover {
+    background: #00ff41;
+    color: black;
+    box-shadow: 0 0 15px #00ff41;
+}

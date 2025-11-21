@@ -48,7 +48,7 @@ function blockSite() {
     overlay.style.display = "flex";
     overlay.style.justifyContent = "center";
     overlay.style.alignItems = "center";
-    overlay.style.color = "white";
+    overlay.style.color = "#00ff41";
     overlay.style.fontSize = "24px";
     overlay.innerText = "This site is blocked. Get back to work!";
     overlay.style.visibility = "visible";
