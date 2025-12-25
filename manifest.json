@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "AI Chatbot blocker",
-  "version": "1.0",
+  "name": "No AI",
+  "version": "2.0",
   "description": "Extension to block AI Chat bots",
   "permissions": ["storage", "tabs"],
   "action": {
@@ -19,6 +19,12 @@
       "matches": ["<all_urls>"],
       "js": ["content.js"],
       "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["fonts/*"],
+      "matches": ["<all_urls>"]
     }
   ]
 }

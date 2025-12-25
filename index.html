@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -14,7 +15,23 @@
             <p id="title">AI Chatbot blocker</p>
         </div>
         <div class="input-container">
+            <div class="mode-selector">
+                <label>
+                    <input type="radio" name="mode" value="instant" checked>
+                    Instant
+                </label>
+                <label>
+                    <input type="radio" name="mode" value="timer">
+                    Timer
+                </label>
+            </div>
             <button id="startBlockingButton">Start Blocking AI</button>
+            <div class="timer-controls">
+                <input type="number" id="minutesInput" min="1" placeholder="25" value="25">
+                <span>minutes</span>
+            </div>
+
+            <p id="timerDisplay" style="display:none;"></p>
         </div>
         <script src="./script.js"></script>
     </div>
