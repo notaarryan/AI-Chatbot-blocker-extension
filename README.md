@@ -7,6 +7,8 @@ Stop wasting time on AI chat websites and stay focused!
 
 Instead of sneaking back to your favorite chatbots during work or study time, this extension **blocks those websites instantly** and shows a clear message telling you to get back on track.
 
+You can try it out on the [Chrome Web Store](https://chromewebstore.google.com/detail/no-ai/gbfhceceennmlhiookakjobbmkhligia)
+
 ---
 
 ## 🔒 What Does It Block?
