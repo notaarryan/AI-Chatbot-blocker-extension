@@ -179,6 +179,16 @@ chrome.storage.local.get({ runBackground: false, endTime: null }, (data) => {
   }
 
   document.addEventListener("keydown", () => {
-    blockSite();
+    chrome.storage.local.get(
+      { runBackground: false, endTime: null },
+      (latest) => {
+        if (
+          latest.runBackground &&
+          (!latest.endTime || Date.now() < latest.endTime)
+        ) {
+          blockSite();
+        }
+      }
+    );
   });
 });
