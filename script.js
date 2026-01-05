@@ -2,7 +2,7 @@ const startBlockingButton = document.getElementById("startBlockingButton");
 const minutesInput = document.getElementById("minutesInput");
 const timerDisplay = document.getElementById("timerDisplay");
 const modeRadios = document.querySelectorAll('input[name="mode"]');
-const timerControls = document.querySelector('.timer-controls');
+const timerControls = document.querySelector(".timer-controls");
 
 let countdownInterval = null;
 
@@ -53,17 +53,14 @@ function startCountdown(endTime) {
   }, 1000);
 }
 
-chrome.storage.local.get(
-  { runBackground: false, endTime: null },
-  (state) => {
-    updateUI(state);
-    if (state.runBackground && state.endTime) {
-      startCountdown(state.endTime);
-    }
+chrome.storage.local.get({ runBackground: false, endTime: null }, (state) => {
+  updateUI(state);
+  if (state.runBackground && state.endTime) {
+    startCountdown(state.endTime);
   }
-);
+});
 
-modeRadios.forEach(radio => {
+modeRadios.forEach((radio) => {
   radio.addEventListener("change", () => {
     if (getSelectedMode() === "timer") {
       timerControls.classList.add("active");
@@ -74,41 +71,36 @@ modeRadios.forEach(radio => {
 });
 
 startBlockingButton.addEventListener("click", () => {
-  chrome.storage.local.get(
-    { runBackground: false, endTime: null },
-    (state) => {
-      if (state.runBackground) {
-        chrome.storage.local.set({ runBackground: false, endTime: null });
-        clearInterval(countdownInterval);
-        updateUI({ runBackground: false });
-      } else {
-        let endTime = null;
+  chrome.storage.local.get({ runBackground: false, endTime: null }, (state) => {
+    if (state.runBackground) {
+      chrome.storage.local.set({ runBackground: false, endTime: null });
+      clearInterval(countdownInterval);
+      updateUI({ runBackground: false });
+    } else {
+      let endTime = null;
 
-        if (getSelectedMode() === "timer") {
-          const minutes = parseInt(minutesInput.value, 10);
-          if (!minutes || minutes <= 0) {
-            alert("Please enter a valid number of minutes.");
-            return;
-          }
-          endTime = Date.now() + minutes * 60 * 1000;
+      if (getSelectedMode() === "timer") {
+        const minutes = parseInt(minutesInput.value, 10);
+        if (!minutes || minutes <= 0) {
+          alert("Please enter a valid number of minutes.");
+          return;
         }
+        endTime = Date.now() + minutes * 60 * 1000;
+      }
 
-        chrome.storage.local.set({
-          runBackground: true,
-          endTime,
-        });
+      chrome.storage.local.set({
+        runBackground: true,
+        endTime,
+      });
 
-        if (endTime) {
-          startCountdown(endTime);
-        }
-        updateUI({ runBackground: true, endTime });
+      if (endTime) {
+        startCountdown(endTime);
+      }
+      updateUI({ runBackground: true, endTime });
 
-        if (endTime) {
-          chrome.tabs.create({
-            url: chrome.runtime.getURL("index.html?timer=true"),
-          });
-        }
+      if (endTime) {
+        window.open(chrome.runtime.getURL("index.html?timer=true"), "_blank");
       }
     }
-  );
+  });
 });

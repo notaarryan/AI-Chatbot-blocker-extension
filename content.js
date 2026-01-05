@@ -33,6 +33,12 @@ function blockSite() {
       <h1 id="title">AI Blocked</h1>
       <p class="blocked-text">Stay focused. This site is temporarily blocked.</p>
       <p id="blockedTimer" style="display:none;"></p>
+      <p style="margin-top:18px; font-size:0.85rem; opacity:0.75;">
+        Like this blocker?
+        <a href="https://buymeacoffee.com/aryanparmar" target="_blank" style="color:#60a5fa; text-decoration:none;">
+          Buy me a coffee ☕
+        </a>
+      </p>
     </div>
   `;
 
@@ -171,4 +177,8 @@ chrome.storage.local.get({ runBackground: false, endTime: null }, (data) => {
   if (data.runBackground && (!data.endTime || Date.now() < data.endTime)) {
     blockSite();
   }
+
+  document.addEventListener("keydown", () => {
+    blockSite();
+  });
 });

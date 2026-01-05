@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
   "name": "No AI",
-  "version": "2.0",
+  "version": "2.1",
   "description": "Extension to block AI Chat bots",
-  "permissions": ["storage", "tabs"],
+  "permissions": ["storage"],
   "action": {
     "default_popup": "index.html",
     "default_icon": "icon.png"
